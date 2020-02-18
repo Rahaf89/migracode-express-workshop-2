@@ -14,8 +14,6 @@ app.get("/bookings", function(req, res) {
 
 app.get("/bookings/:bookingId", function(req, res) {
   const bookingId = parseInt(req.params.bookingId);
-
-  // console.log("holaaaaaaa", utils.getBooking(req.params.bookingId));
   if (utils.checkBookingExists(bookingId)) {
     const booking = utils.getBooking(bookingId);
     console.log(booking);
