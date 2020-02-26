@@ -1,4 +1,4 @@
-const data = require("./data");
+const data = require('./data'); 
 
 /**
  * Checks that a booking with the passed id
@@ -6,11 +6,9 @@ const data = require("./data");
  * @param {string} id The id to check
  */
 function checkBookingExists(id) {
-  const booking = data.find(function(item) {
-    return item.id === id;
-  });
+  const booking = data.find((item) => item.id === id); 
 
-  return !!booking;
+  return ! ! booking; 
 }
 
 /**
@@ -20,12 +18,12 @@ function checkBookingExists(id) {
  */
 function createBooking(booking) {
   if (checkBookingExists(booking.id)) {
-    throw new Error(`Booking with id ${booking.id} already exists`);
+    throw new Error(`Booking with id $ {booking.id}already exists`); 
   }
 
-  data.push(booking);
+  data.push(booking); 
 
-  return booking;
+  return booking; 
 }
 
 /**
@@ -35,17 +33,15 @@ function createBooking(booking) {
  * @param {string} id The booking to delete
  */
 function deleteBooking(id) {
-  const indexForDeletion = data.findIndex(function(item) {
-    return item.id === id;
-  });
+  const indexForDeletion = data.findIndex((item) => item.id === id); 
 
   if (indexForDeletion === -1) {
-    return new Error(`Booking with id ${id} does not exist`);
+    return new Error(`Booking with id $ {id}does not exist`); 
   }
 
-  const [deleted] = data.splice(index, 1);
+  const [deleted] = data.splice(indexForDeletion, 1); 
 
-  return deleted;
+  return deleted; 
 }
 
 /**
@@ -55,24 +51,22 @@ function deleteBooking(id) {
  * @param {object} booking The booking object
  */
 function editBooking(id, booking) {
-  const indexForUpdate = data.findIndex(function(item) {
-    return item.id === id;
-  });
+  const indexForUpdate = data.findIndex((item) => item.id === id); 
 
   if (indexForUpdate === -1) {
-    return new Error(`Booking with id ${id} does not exist`);
+    return new Error(`Booking with id $ {id}does not exist`); 
   }
 
-  data[indexForUpdate] = booking;
+  data[indexForUpdate] = booking; 
 
-  return booking;
+  return booking; 
 }
 
 /**
  * Returns an array with bookings
  */
 function getAllBookings() {
-  return data;
+  return data; 
 }
 
 /**
@@ -81,22 +75,20 @@ function getAllBookings() {
  * @param {string} id Booking id
  */
 function getBooking(id) {
-  const booking = data.find(function(item) {
-    return item.id === id;
-  });
+  const booking = data.find((item) => item.id === id); 
 
-  if (!booking) {
-    return new Error(`Booking with id ${id} does not exist`);
+  if ( ! booking) {
+    throw new Error(`Booking with id $ {id}does not exist`); 
   }
 
-  return booking;
+  return booking; 
 }
 
-module.exports = {
-  checkBookingExists,
-  createBooking,
-  deleteBooking,
-  editBooking,
-  getAllBookings,
-  getBooking
-};
+module.exports =  {
+  checkBookingExists, 
+  createBooking, 
+  deleteBooking, 
+  editBooking, 
+  getAllBookings, 
+  getBooking, 
+}; 
